@@ -604,4 +604,162 @@ footer {
     .contact-buttons {
         padding: 0 1rem;
     }
+}
+
+/* Estilos para características próximas */
+.upcoming-features {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.upcoming-features h4 {
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.upcoming-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.upcoming-features li {
+    margin: 0.8rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.upcoming-features i {
+    color: #4CAF50;
+}
+
+/* Estilos para la versión web */
+.web-version {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.web-version-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.web-version-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.web-version-header h3 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.web-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.web-feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.web-feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.web-feature-card i {
+    font-size: 2.5rem;
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.web-feature-card h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.pricing-options {
+    margin-top: 3rem;
+}
+
+.pricing-options h3 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.pricing-cards .pricing-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.pricing-cards .pricing-card h4 {
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.pricing-cards .pricing-card .price {
+    font-size: 1.5rem;
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.pricing-cards .pricing-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.pricing-cards .pricing-card ul li {
+    margin: 0.5rem 0;
+    color: #ccc;
+}
+
+/* Estilos para la sección del logo */
+.logo-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #1a1a1a;
+}
+
+.logo-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.main-logo {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .web-features-grid,
+    .pricing-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .web-version-header h3 {
+        font-size: 2rem;
+    }
 } 
