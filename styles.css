@@ -337,7 +337,7 @@ footer {
 }
 
 /* Animaciones */
-@keyframes fadeIn {
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -348,9 +348,135 @@ footer {
     }
 }
 
-.feature-card, .pricing-card {
-    animation: fadeIn 0.5s ease-out;
+@keyframes logoAnimation {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Logo animado en el navbar */
+.logo-animated {
+    height: 40px;
+    margin-right: 1rem;
+    animation: logoAnimation 1s ease-out;
+}
+
+/* Aplicar animaciones a las secciones */
+.hero-content {
+    animation: fadeInUp 1s ease-out;
+}
+
+.feature-card {
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.2s; }
+.feature-card:nth-child(2) { animation-delay: 0.4s; }
+.feature-card:nth-child(3) { animation-delay: 0.6s; }
+
+/* Mejorar visibilidad en la versión web */
+.web-version {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #ffffff;
+}
+
+.web-version-header h3 {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.web-version-header p {
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+.web-feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.web-feature-card h4 {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.web-feature-card p {
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+.pricing-cards .pricing-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.pricing-cards .pricing-card h4 {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.pricing-cards .pricing-card .price {
+    color: #4CAF50;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.pricing-cards .pricing-card ul li {
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+/* Animaciones para las tarjetas de precios */
+.pricing-cards .pricing-card:nth-child(1) { animation-delay: 0.2s; }
+.pricing-cards .pricing-card:nth-child(2) { animation-delay: 0.4s; }
+.pricing-cards .pricing-card:nth-child(3) { animation-delay: 0.6s; }
+.pricing-cards .pricing-card:nth-child(4) { animation-delay: 0.8s; }
+
+/* Animación para el logo en la sección de logo */
+.main-logo {
+    animation: logoAnimation 1s ease-out;
+}
+
+/* Animación para las características próximas */
+.upcoming-features {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Animación para los botones de contacto */
+.contact-button {
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.contact-button:nth-child(1) { animation-delay: 0.2s; }
+.contact-button:nth-child(2) { animation-delay: 0.4s; }
+.contact-button:nth-child(3) { animation-delay: 0.6s; }
+.contact-button:nth-child(4) { animation-delay: 0.8s; }
 
 /* Estilos para la sección MikroTik */
 .mikrotik-features {
