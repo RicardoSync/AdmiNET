@@ -199,6 +199,82 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Funcionalidad para la presentación local inicial
+document.addEventListener('DOMContentLoaded', function() {
+    const localSliderInicial = document.querySelector('#presentacion-local-inicial .local-presentation-slider');
+    const localSlidesInicial = document.querySelectorAll('#presentacion-local-inicial .local-presentation-slide');
+    const localPrevBtnInicial = document.querySelector('#presentacion-local-inicial .local-presentation-prev');
+    const localNextBtnInicial = document.querySelector('#presentacion-local-inicial .local-presentation-next');
+    const localDotsInicial = document.querySelector('#presentacion-local-inicial .local-presentation-dots');
+    const currentSlideSpanInicial = document.querySelector('#presentacion-local-inicial .current-slide');
+    const totalSlidesSpanInicial = document.querySelector('#presentacion-local-inicial .total-slides');
+    
+    let currentLocalSlideInicial = 0;
+    const totalLocalSlidesInicial = localSlidesInicial.length;
+    
+    // Crear puntos indicadores para la presentación inicial
+    localSlidesInicial.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('local-presentation-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToLocalSlideInicial(index));
+        localDotsInicial.appendChild(dot);
+    });
+    
+    // Actualizar contador inicial
+    totalSlidesSpanInicial.textContent = totalLocalSlidesInicial;
+    currentSlideSpanInicial.textContent = currentLocalSlideInicial + 1;
+    
+    // Función para ir a una diapositiva específica en la presentación inicial
+    function goToLocalSlideInicial(index) {
+        currentLocalSlideInicial = index;
+        localSliderInicial.style.transform = `translateX(-${currentLocalSlideInicial * 100}%)`;
+        updateLocalDotsInicial();
+        updateLocalCounterInicial();
+    }
+    
+    // Actualizar puntos indicadores iniciales
+    function updateLocalDotsInicial() {
+        document.querySelectorAll('#presentacion-local-inicial .local-presentation-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentLocalSlideInicial);
+        });
+    }
+    
+    // Actualizar contador inicial
+    function updateLocalCounterInicial() {
+        currentSlideSpanInicial.textContent = currentLocalSlideInicial + 1;
+    }
+    
+    // Eventos para los botones de navegación iniciales
+    localPrevBtnInicial.addEventListener('click', () => {
+        currentLocalSlideInicial = (currentLocalSlideInicial - 1 + totalLocalSlidesInicial) % totalLocalSlidesInicial;
+        goToLocalSlideInicial(currentLocalSlideInicial);
+    });
+    
+    localNextBtnInicial.addEventListener('click', () => {
+        currentLocalSlideInicial = (currentLocalSlideInicial + 1) % totalLocalSlidesInicial;
+        goToLocalSlideInicial(currentLocalSlideInicial);
+    });
+    
+    // Auto-play para el carrusel inicial
+    let localAutoplayIntervalInicial = setInterval(() => {
+        currentLocalSlideInicial = (currentLocalSlideInicial + 1) % totalLocalSlidesInicial;
+        goToLocalSlideInicial(currentLocalSlideInicial);
+    }, 5000);
+    
+    // Pausar auto-play al hacer hover en el carrusel inicial
+    localSliderInicial.addEventListener('mouseenter', () => {
+        clearInterval(localAutoplayIntervalInicial);
+    });
+    
+    localSliderInicial.addEventListener('mouseleave', () => {
+        localAutoplayIntervalInicial = setInterval(() => {
+            currentLocalSlideInicial = (currentLocalSlideInicial + 1) % totalLocalSlidesInicial;
+            goToLocalSlideInicial(currentLocalSlideInicial);
+        }, 5000);
+    });
+});
+
 // Funcionalidad para la presentación local
 document.addEventListener('DOMContentLoaded', function() {
     const localSlider = document.querySelector('.local-presentation-slider');
