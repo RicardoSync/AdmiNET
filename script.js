@@ -197,4 +197,132 @@ document.addEventListener('DOMContentLoaded', function() {
         slide.style.transform = 'translateY(20px)';
         observer.observe(slide);
     });
+});
+
+// Funcionalidad para la presentación local
+document.addEventListener('DOMContentLoaded', function() {
+    const localSlider = document.querySelector('.local-presentation-slider');
+    const localSlides = document.querySelectorAll('.local-presentation-slide');
+    const localPrevBtn = document.querySelector('.local-presentation-prev');
+    const localNextBtn = document.querySelector('.local-presentation-next');
+    const localDots = document.querySelector('.local-presentation-dots');
+    const currentSlideSpan = document.querySelector('.current-slide');
+    const totalSlidesSpan = document.querySelector('.total-slides');
+    
+    let currentLocalSlide = 0;
+    const totalLocalSlides = localSlides.length;
+    
+    // Crear puntos indicadores
+    localSlides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('local-presentation-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToLocalSlide(index));
+        localDots.appendChild(dot);
+    });
+    
+    // Actualizar contador
+    totalSlidesSpan.textContent = totalLocalSlides;
+    currentSlideSpan.textContent = currentLocalSlide + 1;
+    
+    // Función para ir a una diapositiva específica
+    function goToLocalSlide(index) {
+        currentLocalSlide = index;
+        localSlider.style.transform = `translateX(-${currentLocalSlide * 100}%)`;
+        updateLocalDots();
+        updateLocalCounter();
+    }
+    
+    // Actualizar puntos indicadores
+    function updateLocalDots() {
+        document.querySelectorAll('.local-presentation-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentLocalSlide);
+        });
+    }
+    
+    // Actualizar contador
+    function updateLocalCounter() {
+        currentSlideSpan.textContent = currentLocalSlide + 1;
+    }
+    
+    // Eventos para los botones de navegación
+    localPrevBtn.addEventListener('click', () => {
+        currentLocalSlide = (currentLocalSlide - 1 + totalLocalSlides) % totalLocalSlides;
+        goToLocalSlide(currentLocalSlide);
+    });
+    
+    localNextBtn.addEventListener('click', () => {
+        currentLocalSlide = (currentLocalSlide + 1) % totalLocalSlides;
+        goToLocalSlide(currentLocalSlide);
+    });
+    
+    // Auto-play para el carrusel local
+    let localAutoplayInterval = setInterval(() => {
+        currentLocalSlide = (currentLocalSlide + 1) % totalLocalSlides;
+        goToLocalSlide(currentLocalSlide);
+    }, 5000);
+    
+    // Pausar auto-play al hacer hover
+    localSlider.addEventListener('mouseenter', () => {
+        clearInterval(localAutoplayInterval);
+    });
+    
+    localSlider.addEventListener('mouseleave', () => {
+        localAutoplayInterval = setInterval(() => {
+            currentLocalSlide = (currentLocalSlide + 1) % totalLocalSlides;
+            goToLocalSlide(currentLocalSlide);
+        }, 5000);
+    });
+    
+    // Modal para vista detallada
+    const modal = document.createElement('div');
+    modal.classList.add('local-presentation-modal');
+    const modalImg = document.createElement('img');
+    const closeBtn = document.createElement('div');
+    closeBtn.classList.add('local-presentation-modal-close');
+    closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+    modal.appendChild(modalImg);
+    modal.appendChild(closeBtn);
+    document.body.appendChild(modal);
+    
+    // Abrir modal al hacer clic en una imagen
+    localSlides.forEach(slide => {
+        slide.addEventListener('click', () => {
+            modalImg.src = slide.querySelector('img').src;
+            modal.classList.add('active');
+        });
+    });
+    
+    // Cerrar modal
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+    
+    // Cerrar modal con la tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+        }
+    });
+    
+    // Navegación con teclado
+    document.addEventListener('keydown', (e) => {
+        if (modal.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') {
+                currentLocalSlide = (currentLocalSlide - 1 + totalLocalSlides) % totalLocalSlides;
+                goToLocalSlide(currentLocalSlide);
+                modalImg.src = localSlides[currentLocalSlide].querySelector('img').src;
+            } else if (e.key === 'ArrowRight') {
+                currentLocalSlide = (currentLocalSlide + 1) % totalLocalSlides;
+                goToLocalSlide(currentLocalSlide);
+                modalImg.src = localSlides[currentLocalSlide].querySelector('img').src;
+            }
+        }
+    });
 }); 

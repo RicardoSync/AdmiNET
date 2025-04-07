@@ -1117,8 +1117,8 @@ footer {
     }
 }
 
-/* Estilos para la sección de presentación */
-.presentation {
+/* Estilos para la presentación local */
+.local-presentation {
     padding: 4rem 2rem;
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     color: #ffffff;
@@ -1126,7 +1126,7 @@ footer {
     overflow: hidden;
 }
 
-.presentation h2 {
+.local-presentation h2 {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
@@ -1134,20 +1134,20 @@ footer {
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-.presentation-container {
+.local-presentation-container {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
     padding: 0 4rem;
 }
 
-.presentation-slider {
+.local-presentation-slider {
     display: flex;
     transition: transform 0.5s ease;
     gap: 2rem;
 }
 
-.presentation-slide {
+.local-presentation-slide {
     min-width: calc(100% - 4rem);
     padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
@@ -1156,9 +1156,15 @@ footer {
     border: 1px solid rgba(255, 255, 255, 0.1);
     animation: fadeInUp 0.5s ease-out;
     overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.presentation-slide img {
+.local-presentation-slide:hover {
+    transform: scale(1.02);
+}
+
+.local-presentation-slide img {
     width: 100%;
     height: auto;
     border-radius: 10px;
@@ -1166,12 +1172,12 @@ footer {
     transition: transform 0.3s ease;
 }
 
-.presentation-slide:hover img {
-    transform: scale(1.02);
+.local-presentation-slide:hover img {
+    transform: scale(1.05);
 }
 
-.presentation-prev,
-.presentation-next {
+.local-presentation-prev,
+.local-presentation-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1189,33 +1195,33 @@ footer {
     z-index: 10;
 }
 
-.presentation-prev:hover,
-.presentation-next:hover {
+.local-presentation-prev:hover,
+.local-presentation-next:hover {
     background: rgba(76, 175, 80, 0.4);
     transform: translateY(-50%) scale(1.1);
 }
 
-.presentation-prev {
+.local-presentation-prev {
     left: 1rem;
 }
 
-.presentation-next {
+.local-presentation-next {
     right: 1rem;
 }
 
-.presentation-prev i,
-.presentation-next i {
+.local-presentation-prev i,
+.local-presentation-next i {
     font-size: 1.2rem;
 }
 
-.presentation-dots {
+.local-presentation-dots {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
     margin-top: 2rem;
 }
 
-.presentation-dot {
+.local-presentation-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -1224,113 +1230,143 @@ footer {
     transition: all 0.3s ease;
 }
 
-.presentation-dot.active {
+.local-presentation-dot.active {
     background: #4CAF50;
     transform: scale(1.2);
 }
 
-/* Animación para los slides de presentación */
-@keyframes slideInPresentation {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+.local-presentation-counter {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
 }
 
-.presentation-slide {
-    animation: slideInPresentation 0.5s ease-out;
+/* Modal para vista detallada */
+.local-presentation-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Responsive para presentación */
+.local-presentation-modal.active {
+    display: flex;
+}
+
+.local-presentation-modal img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.local-presentation-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.local-presentation-modal-close:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive para presentación local */
 @media (max-width: 1200px) {
-    .presentation-container {
+    .local-presentation-container {
         padding: 0 3rem;
     }
 }
 
 @media (max-width: 768px) {
-    .presentation {
+    .local-presentation {
         padding: 3rem 1rem;
     }
 
-    .presentation h2 {
+    .local-presentation h2 {
         font-size: 2rem;
         margin-bottom: 2rem;
     }
 
-    .presentation-container {
+    .local-presentation-container {
         padding: 0 2.5rem;
     }
 
-    .presentation-slide {
+    .local-presentation-slide {
         min-width: calc(100% - 2rem);
         padding: 0.5rem;
     }
 
-    .presentation-prev,
-    .presentation-next {
+    .local-presentation-prev,
+    .local-presentation-next {
         width: 2.5rem;
         height: 2.5rem;
     }
 
-    .presentation-prev {
+    .local-presentation-prev {
         left: 0.5rem;
     }
 
-    .presentation-next {
+    .local-presentation-next {
         right: 0.5rem;
     }
 
-    .presentation-dots {
+    .local-presentation-dots {
         margin-top: 1.5rem;
     }
 
-    .presentation-dot {
+    .local-presentation-dot {
         width: 8px;
         height: 8px;
     }
 }
 
 @media (max-width: 480px) {
-    .presentation {
+    .local-presentation {
         padding: 2rem 0.5rem;
     }
 
-    .presentation h2 {
+    .local-presentation h2 {
         font-size: 1.8rem;
         margin-bottom: 1.5rem;
     }
 
-    .presentation-container {
+    .local-presentation-container {
         padding: 0 2rem;
     }
 
-    .presentation-slide {
+    .local-presentation-slide {
         min-width: calc(100% - 1rem);
         padding: 0.25rem;
     }
 
-    .presentation-prev,
-    .presentation-next {
+    .local-presentation-prev,
+    .local-presentation-next {
         width: 2rem;
         height: 2rem;
     }
 
-    .presentation-prev i,
-    .presentation-next i {
+    .local-presentation-prev i,
+    .local-presentation-next i {
         font-size: 1rem;
     }
 
-    .presentation-dots {
+    .local-presentation-dots {
         margin-top: 1rem;
         gap: 0.3rem;
     }
 
-    .presentation-dot {
+    .local-presentation-dot {
         width: 6px;
         height: 6px;
     }
@@ -1338,35 +1374,35 @@ footer {
 
 /* Ajustes para tablets en modo paisaje */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-    .presentation-container {
+    .local-presentation-container {
         padding: 0 3.5rem;
     }
 
-    .presentation-slide {
+    .local-presentation-slide {
         min-width: calc(100% - 3rem);
     }
 }
 
 /* Ajustes para pantallas grandes */
 @media (min-width: 1440px) {
-    .presentation-container {
+    .local-presentation-container {
         max-width: 1400px;
         padding: 0 5rem;
     }
 
-    .presentation-slide {
+    .local-presentation-slide {
         min-width: calc(100% - 5rem);
     }
 }
 
 /* Ajustes para dispositivos con pantalla táctil */
 @media (hover: none) {
-    .presentation-slide:hover img {
+    .local-presentation-slide:hover img {
         transform: none;
     }
 
-    .presentation-prev:hover,
-    .presentation-next:hover {
+    .local-presentation-prev:hover,
+    .local-presentation-next:hover {
         transform: translateY(-50%);
     }
 }
