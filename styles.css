@@ -1562,3 +1562,41 @@ footer {
         font-size: 1rem;
     }
 } 
+
+.tiktok-videos {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.tiktok-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Estilos para la sección de empresas */
+.empresas-usuarios {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.empresas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.empresa-card img {
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.empresa-card img:hover {
+    transform: scale(1.05);
+}
