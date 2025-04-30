@@ -1600,3 +1600,41 @@ footer {
 .empresa-card img:hover {
     transform: scale(1.05);
 }
+/* Testimonios */
+.testimonials {
+    background-color: var(--light-bg);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.testimonial-card p {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.testimonial-card h4 {
+    font-weight: bold;
+    color: var(--primary-color);
+}
